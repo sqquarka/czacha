@@ -94,34 +94,46 @@
   <div class="spacer"></div>
 
   <!-- JavaScript do scroll animacji -->
-  <script>
-    const totalFrames = 22;
-    const startFrame = 1;
-    const img = document.getElementById('skull-bg');
-    const loadedFrames = [];
+ <img id="skull-bg" src="frames/0001.png" alt="Skull" />
 
-    // Preload klatek
-    for (let i = 0; i < totalFrames; i++) {
-      const frameNumber = String(i + startFrame).padStart(4, '0');
-      const image = new Image();
-      image.src = `frames/${frameNumber}.png`;
-      loadedFrames.push(image);
+<script>
+  console.log("JS startuje!");
+
+  const totalFrames = 22;
+  const startFrame = 1;
+  const img = document.getElementById('skull-bg');
+
+  if (!img) {
+    console.error("Nie znaleziono obrazka z id='skull-bg'");
+  }
+
+  const loadedFrames = [];
+
+  for (let i = 0; i < totalFrames; i++) {
+    const frameNumber = String(i + startFrame).padStart(4, '0');
+    const image = new Image();
+    image.src = `frames/${frameNumber}.png`;
+    loadedFrames.push(image);
+  }
+
+  let lastFrame = -1;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const scrollFraction = scrollTop / maxScroll;
+    const frame = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames));
+    const frameNumber = String(frame + startFrame).padStart(4, '0');
+
+    console.log("scrollTop:", scrollTop, "frame:", frameNumber);
+
+    if (frame !== lastFrame && img) {
+      img.src = `frames/${frameNumber}.png`;
+      lastFrame = frame;
     }
+  });
+</script>
 
-    // Scroll + throttle
-    let lastFrame = -1;
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      const scrollFraction = scrollTop / maxScroll;
-      const frame = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames));
-      if (frame !== lastFrame) {
-        const frameNumber = String(frame + startFrame).padStart(4, '0');
-        img.src = `frames/${frameNumber}.png`;
-        lastFrame = frame;
-      }
-    });
-  </script>
 
 </body>
 </html>
