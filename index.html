@@ -63,7 +63,7 @@
 <body>
 
   <!-- Tło: animowana czaszka -->
-  <img id="skull-bg" src="frames/0001.png" alt="Skull Background" loading="eager" />
+ <img id="skull-bg" src="frames/0001.png" alt="Skull Background" loading="eager" />
 
   <!-- Panel tekstowy -->
   <div class="glass-panel">
@@ -97,16 +97,9 @@
  <img id="skull-bg" src="frames/0001.png" alt="Skull" />
 
 <script>
-  console.log("JS startuje!");
-
   const totalFrames = 22;
   const startFrame = 1;
   const img = document.getElementById('skull-bg');
-
-  if (!img) {
-    console.error("Nie znaleziono obrazka z id='skull-bg'");
-  }
-
   const loadedFrames = [];
 
   for (let i = 0; i < totalFrames; i++) {
@@ -117,22 +110,19 @@
   }
 
   let lastFrame = -1;
-
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     const maxScroll = document.body.scrollHeight - window.innerHeight;
     const scrollFraction = scrollTop / maxScroll;
     const frame = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames));
     const frameNumber = String(frame + startFrame).padStart(4, '0');
-
-    console.log("scrollTop:", scrollTop, "frame:", frameNumber);
-
     if (frame !== lastFrame && img) {
       img.src = `frames/${frameNumber}.png`;
       lastFrame = frame;
     }
   });
 </script>
+
 
 
 </body>
