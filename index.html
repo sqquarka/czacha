@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll Skull Animation</title>
+  <style>
+    body {
+      margin: 0;
+      height: 6000px; /* więcej miejsca do scrolla */
+      background: #f7f7f7;
+      display: flex;
+    }
+
+    #skull {
+      position: sticky;
+      top: 100px;
+      width: 600px;
+      flex: 1;
+    }
+
+    .panel {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.2);
+      color: #111;
+      font-family: sans-serif;
+      padding: 2rem;
+      margin: 2rem;
+      backdrop-filter: blur(4px);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="skull" src="frames/0001.png" alt="Skull Frame">
+
+  <div class="panel">
+    <h1>DUPA DUPIE NIE RÓWNA</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut lorem nec sapien bibendum fermentum...</p>
+    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Morbi rhoncus leo sed tincidunt...</p>
+    <p>Vivamus sit amet tortor vel nibh tincidunt porta. Curabitur ut libero sed nisi varius tempus...</p>
+    <p>(Dodaj więcej Lorem Ipsum jeśli chcesz wydłużyć scroll)</p>
+  </div>
+
+  <script>
+    const totalFrames = 164;
+    const img = document.getElementById('skull');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const scrollFraction = scrollTop / maxScroll;
+      const frame = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames));
+      const frameNumber = String(frame + 1).padStart(4, '0');
+      img.src = `frames/${frameNumber}.png`;
+    });
+  </script>
+
+</body>
+</html>
