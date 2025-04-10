@@ -9,9 +9,9 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow-x: hidden;
       font-family: sans-serif;
       background: black;
+      overflow-x: hidden;
     }
 
     #skull-bg {
@@ -28,31 +28,34 @@
     .glass-panel {
       position: relative;
       z-index: 1;
-      max-width: 500px;
-      margin: 3rem;
+      width: 360px;
+      max-width: 80%;
+      margin: 3rem 2rem;
       padding: 2rem;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
       color: white;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
     }
 
     p {
       line-height: 1.6;
+      margin-bottom: 1.2rem;
     }
 
     .spacer {
-      height: 5000px;
+      height: 6000px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       .glass-panel {
-        margin: 1rem;
+        width: 90%;
+        margin: 2rem 1rem;
         padding: 1.5rem;
       }
     }
@@ -60,19 +63,31 @@
 </head>
 <body>
 
-  <!-- Tło animacji -->
+  <!-- Animowane tło -->
   <img id="skull-bg" src="frames/0001.png" alt="Skull Background" loading="eager" />
 
-  <!-- Panel tekstowy -->
+  <!-- Rozmyte okienko z tekstem -->
   <div class="glass-panel">
     <h1>DUPA DUPIE NIE RÓWNA</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-    <p>[... reszta tekstu bez zmian ...]</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <p>Aliquam eget felis vitae lectus suscipit volutpat. Nullam ac enim purus. Proin viverra sit amet nulla ac luctus. Sed vel libero nisi.</p>
+    <p>Vivamus in libero et augue sagittis faucibus. Suspendisse in blandit arcu, in bibendum eros. Cras mollis varius tortor.</p>
+    <p>Phasellus nec lorem et felis posuere congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+    <p>Curabitur eu tristique neque. Quisque at ante sed massa pulvinar tristique nec sed orci. In porta blandit urna.</p>
+    <p>Vestibulum eget lorem ac lorem iaculis congue. Nunc convallis, velit a tincidunt vestibulum, ligula sapien tincidunt sem, non gravida massa mi ac nibh.</p>
+    <p>Morbi fringilla accumsan sapien, eget imperdiet augue porttitor a. Etiam nec mauris a diam vulputate varius.</p>
+    <p>Proin scelerisque massa nec risus fringilla, at varius justo facilisis. Mauris nec lectus vel enim mattis accumsan.</p>
+    <p>Curabitur ac luctus est, vitae tincidunt augue. Fusce luctus sem eget magna bibendum, a cursus sapien dictum.</p>
+    <p>Sed nec nunc viverra, lacinia justo in, fermentum purus. Integer lobortis, leo in dapibus ultricies, augue purus pretium magna, non bibendum turpis erat id est.</p>
+    <p>Duis efficitur sagittis ipsum, a aliquam diam commodo nec. Vivamus in faucibus ligula. Aliquam condimentum risus nec lorem dapibus, et fermentum nulla porttitor.</p>
+    <p>Nunc eu mauris ac sem facilisis eleifend. Fusce nec sapien mauris. Pellentesque imperdiet convallis nunc.</p>
+    <p>Morbi sit amet finibus sem. Nullam sed justo et nisl rhoncus suscipit. Integer sodales tincidunt erat, a feugiat lorem.</p>
+    <p>Donec tristique imperdiet neque a fermentum. Proin sed diam eros. Sed nec viverra massa, vel maximus risus.</p>
   </div>
 
   <div class="spacer"></div>
 
-  <!-- Skrypt animacji -->
+  <!-- Skrypt animacji scrollowanej -->
   <script>
     const totalFrames = 22;
     const startFrame = 1;
