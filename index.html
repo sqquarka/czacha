@@ -12,7 +12,7 @@
       overflow-x: hidden;
     }
 
-    /* 🔥 Animacja czaszki jako TŁO */
+    /* 🔥 Czaszka jako TŁO pełnoekranowe */
     #skull-bg {
       position: fixed;
       top: 0;
@@ -24,7 +24,7 @@
       pointer-events: none;
     }
 
-    /* 📄 Rozmyte, zaokrąglone okno z tekstem po lewej stronie */
+    /* 📄 Rozmyte, zaokrąglone okno po lewej stronie */
     .glass-panel {
       position: relative;
       z-index: 1;
@@ -47,7 +47,7 @@
       line-height: 1.6;
     }
 
-    /* 🔁 Długi scroll */
+    /* 🔁 Scroll space */
     .spacer {
       height: 5000px;
     }
@@ -58,7 +58,7 @@
   <!-- 🧠 Czaszka jako tło -->
   <img id="skull-bg" src="frames/0001.png" alt="Skull Background">
 
-  <!-- 🪟 Rozmyte okno z tekstem -->
+  <!-- 🪟 Panel tekstowy -->
   <div class="glass-panel">
     <h1>DUPA DUPIE NIE RÓWNA</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
@@ -68,10 +68,10 @@
 
   <div class="spacer"></div>
 
-  <!-- 🔁 JS scrollujący animację -->
+  <!-- 🔁 JS – scroll to frame -->
   <script>
-    const totalFrames = 22; // od 0006 do 0022
-    const startFrame = 6;
+    const totalFrames = 22;
+    const startFrame = 1;
     const img = document.getElementById('skull-bg');
 
     window.addEventListener('scroll', () => {
