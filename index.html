@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Scroll Skull</title>
+  <title>Scroll Skull BG FIX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     html, body {
@@ -14,13 +14,16 @@
       overflow-x: hidden;
     }
 
+    /* BG jako DIV z background-image */
     #skull-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       z-index: 0;
       pointer-events: none;
     }
@@ -38,6 +41,10 @@
       color: white;
     }
 
+    .spacer {
+      height: 6000px;
+    }
+
     h1 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
@@ -46,10 +53,6 @@
     p {
       line-height: 1.6;
       margin-bottom: 1.2rem;
-    }
-
-    .spacer {
-      height: 6000px;
     }
 
     @media (max-width: 600px) {
@@ -63,32 +66,24 @@
 </head>
 <body>
 
-  <!-- Tło -->
-  <img id="skull-bg" src="frames/0001.png" alt="Skull Background" loading="eager" />
+  <!-- BG jako div z dynamicznym background-image -->
+  <div id="skull-bg"></div>
 
-  <!-- Panel -->
   <div class="glass-panel">
     <h1>DUPA DUPIE NIE RÓWNA</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet magna vel justo tempor tincidunt. Vivamus nec felis ut nulla vestibulum blandit.</p>
-    <p>Aliquam erat volutpat. Fusce et diam velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras vel orci sagittis, convallis ligula vitae, convallis lorem.</p>
-    <p>Donec sed lorem a metus rhoncus bibendum. Curabitur tincidunt velit ut sem elementum, vitae luctus justo volutpat. In in mi ac enim laoreet mattis.</p>
-    <p>Nunc nec nulla velit. Aenean mattis dui ac lorem condimentum, nec porttitor augue convallis. Sed sit amet nulla at urna dapibus fringilla.</p>
-    <p>Integer porttitor, est sed sagittis lobortis, ligula metus ultricies diam, et vehicula sapien erat in felis. Nam non sem id libero pulvinar pretium.</p>
-    <p>Morbi non metus vitae enim vehicula egestas. Sed ac ex ut libero fermentum vestibulum. Mauris facilisis justo sit amet sem lacinia, nec pulvinar eros malesuada.</p>
-    <p>Phasellus ac arcu a lorem malesuada pharetra. Cras nec velit non velit fringilla cursus. Nulla facilisi. Aenean ut lorem ac odio rutrum tempor.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar turpis a fermentum lacinia...</p>
+    <p>[dodaj więcej tekstu tutaj jeśli chcesz dłuższy scroll]</p>
   </div>
 
   <div class="spacer"></div>
 
-  <!-- Skrypt animacji -->
   <script>
     const totalFrames = 22;
     const startFrame = 1;
-    const img = document.getElementById('skull-bg');
+    const bgDiv = document.getElementById('skull-bg');
+
     const loadedFrames = [];
 
-    // Preload all frames
     for (let i = 0; i < totalFrames; i++) {
       const frameNumber = String(i + startFrame).padStart(4, '0');
       const image = new Image();
@@ -106,7 +101,7 @@
       const frameNumber = String(frame + startFrame).padStart(4, '0');
 
       if (frame !== lastFrame) {
-        img.src = `frames/${frameNumber}.png`;
+        bgDiv.style.backgroundImage = `url('frames/${frameNumber}.png')`;
         lastFrame = frame;
       }
     });
