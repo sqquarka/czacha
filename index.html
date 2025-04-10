@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Scroll Skull BG FIX</title>
+  <title>Scroll Skull</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     html, body {
@@ -14,7 +14,7 @@
       overflow-x: hidden;
     }
 
-    /* BG jako DIV z background-image */
+    /* Div z animowanym tłem */
     #skull-bg {
       position: fixed;
       top: 0;
@@ -26,6 +26,7 @@
       background-repeat: no-repeat;
       z-index: 0;
       pointer-events: none;
+      background-image: url('frames/0001.png');
     }
 
     .glass-panel {
@@ -41,10 +42,6 @@
       color: white;
     }
 
-    .spacer {
-      height: 6000px;
-    }
-
     h1 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
@@ -53,6 +50,10 @@
     p {
       line-height: 1.6;
       margin-bottom: 1.2rem;
+    }
+
+    .spacer {
+      height: 6000px;
     }
 
     @media (max-width: 600px) {
@@ -66,30 +67,41 @@
 </head>
 <body>
 
-  <!-- BG jako div z dynamicznym background-image -->
+  <!-- Animowane tło -->
   <div id="skull-bg"></div>
 
+  <!-- Panel tekstowy -->
   <div class="glass-panel">
     <h1>DUPA DUPIE NIE RÓWNA</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar turpis a fermentum lacinia...</p>
-    <p>[dodaj więcej tekstu tutaj jeśli chcesz dłuższy scroll]</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam...</p>
+    <p>Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
+    <p>Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+    <p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh.</p>
+    <p>Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem.</p>
+    <p>Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa.</p>
+    <p>Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh.</p>
   </div>
 
   <div class="spacer"></div>
 
+  <!-- Skrypt do animacji scrolla -->
   <script>
     const totalFrames = 22;
     const startFrame = 1;
     const bgDiv = document.getElementById('skull-bg');
-
     const loadedFrames = [];
 
+    // Preload
     for (let i = 0; i < totalFrames; i++) {
       const frameNumber = String(i + startFrame).padStart(4, '0');
       const image = new Image();
       image.src = `frames/${frameNumber}.png`;
       loadedFrames.push(image);
     }
+
+    // Ustaw pierwszą klatkę
+    bgDiv.style.backgroundImage = `url('frames/0001.png')`;
 
     let lastFrame = -1;
 
