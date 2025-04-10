@@ -2,75 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Scroll Skull Animation</title>
+  <title>Scroll Skull</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      height: 3000px; /* miejsce do scrollowania */
-      background: #f7f7f7;
-      display: flex;
+      padding: 0;
+      height: 100%;
+      background: black;
+      overflow-x: hidden;
     }
 
-    #skull {
-  position: sticky;
-  top: 100px;
-  width: 960px;
-  height: 540px;
-  flex: 1;
-}
+    /* 🔥 Animacja czaszki jako TŁO */
+    #skull-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-    .panel {
-      flex: 1;
-      background: rgba(255, 255, 255, 0.2);
-      color: #111;
-      font-family: sans-serif;
+    /* 📄 Rozmyte, zaokrąglone okno z tekstem po lewej stronie */
+    .glass-panel {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+      margin: 3rem;
       padding: 2rem;
-      margin: 2rem;
-      backdrop-filter: blur(4px);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      color: white;
+      font-family: sans-serif;
     }
 
     h1 {
       font-size: 2rem;
       margin-bottom: 1rem;
     }
+
+    p {
+      line-height: 1.6;
+    }
+
+    /* 🔁 Długi scroll */
+    .spacer {
+      height: 5000px;
+    }
   </style>
 </head>
 <body>
 
-  <img id="skull" src="frames/0001.png" alt="Skull Frame">
+  <!-- 🧠 Czaszka jako tło -->
+  <img id="skull-bg" src="frames/0001.png" alt="Skull Background">
 
-  <div class="panel">
+  <!-- 🪟 Rozmyte okno z tekstem -->
+  <div class="glass-panel">
     <h1>DUPA DUPIE NIE RÓWNA</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut lorem nec sapien bibendum fermentum...</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Morbi rhoncus leo sed tincidunt...</p>
-    <p>Vivamus sit amet tortor vel nibh tincidunt porta. Curabitur ut libero sed nisi varius tempus...</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut lorem nec sapien bibendum fermentum...</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Morbi rhoncus leo sed tincidunt...</p>
-    <p>Vivamus sit amet tortor vel nibh tincidunt porta. Curabitur ut libero sed nisi varius tempus...</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut lorem nec sapien bibendum fermentum...</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Morbi rhoncus leo sed tincidunt...</p>
-    <p>Vivamus sit amet tortor vel nibh tincidunt porta. Curabitur ut libero sed nisi varius tempus...</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut lorem nec sapien bibendum fermentum...</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Morbi rhoncus leo sed tincidunt...</p>
-    <p>Vivamus sit amet tortor vel nibh tincidunt porta. Curabitur ut libero sed nisi varius tempus...</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut lorem nec sapien bibendum fermentum...</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Morbi rhoncus leo sed tincidunt...</p>
-    <p>Vivamus sit amet tortor vel nibh tincidunt porta. Curabitur ut libero sed nisi varius tempus...</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut lorem nec sapien bibendum fermentum...</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Morbi rhoncus leo sed tincidunt...</p>
-    <p>Vivamus sit amet tortor vel nibh tincidunt porta. Curabitur ut libero sed nisi varius tempus...</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
+    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
+    <p>Vivamus sit amet tortor vel nibh tincidunt porta. Curabitur ut libero sed nisi varius tempus. Phasellus condimentum lacus quis feugiat vehicula.</p>
   </div>
 
+  <div class="spacer"></div>
+
+  <!-- 🔁 JS scrollujący animację -->
   <script>
-    const totalFrames = 22;
-    const img = document.getElementById('skull');
+    const totalFrames = 22; // od 0006 do 0022
+    const startFrame = 6;
+    const img = document.getElementById('skull-bg');
 
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       const scrollFraction = scrollTop / maxScroll;
       const frame = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames));
-      const frameNumber = String(frame + 1).padStart(4, '0');
+      const frameNumber = String(frame + startFrame).padStart(4, '0');
       img.src = `frames/${frameNumber}.png`;
     });
   </script>
