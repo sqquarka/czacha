@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Scroll Skull</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     html, body {
       margin: 0;
+      padding: 0;
       height: 100%;
       overflow-x: hidden;
+      font-family: sans-serif;
+      background: black;
     }
 
+    /* Czaszka jako pełnoekranowe tło */
     #skull-bg {
       position: fixed;
       top: 0;
@@ -18,62 +23,103 @@
       height: 100vh;
       object-fit: cover;
       z-index: 0;
+      pointer-events: none;
     }
 
+    /* Rozmyte zaokrąglone okno po lewej */
     .glass-panel {
       position: relative;
       z-index: 1;
       max-width: 500px;
       margin: 3rem;
       padding: 2rem;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
       border-radius: 20px;
       color: white;
-      font-family: sans-serif;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      line-height: 1.6;
     }
 
     .spacer {
       height: 5000px;
     }
+
+    @media (max-width: 768px) {
+      .glass-panel {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <img id="skull-bg" src="frames/0001.png" alt="Skull">
+  <!-- Tło: animowana czaszka -->
+  <img id="skull-bg" src="frames/0001.png" alt="Skull Background" loading="eager" />
 
+  <!-- Panel tekstowy -->
   <div class="glass-panel">
     <h1>DUPA DUPIE NIE RÓWNA</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
-    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Morbi imperdiet neque quis libero rhoncus, nec congue dolor bibendum.</p>
+    <p>Aliquam erat volutpat. Proin rhoncus turpis id nisl egestas, vitae volutpat augue sollicitudin. Curabitur tincidunt nisi ut leo fermentum faucibus.</p>
+    <p>Sed ac turpis et nisi pulvinar tincidunt. Quisque ac justo sed sapien eleifend volutpat sed nec lorem. Mauris bibendum nibh ut tincidunt lacinia.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Morbi imperdiet neque quis libero rhoncus, nec congue dolor bibendum.</p>
+    <p>Aliquam erat volutpat. Proin rhoncus turpis id nisl egestas, vitae volutpat augue sollicitudin. Curabitur tincidunt nisi ut leo fermentum faucibus.</p>
+    <p>Sed ac turpis et nisi pulvinar tincidunt. Quisque ac justo sed sapien eleifend volutpat sed nec lorem. Mauris bibendum nibh ut tincidunt lacinia.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Morbi imperdiet neque quis libero rhoncus, nec congue dolor bibendum.</p>
+    <p>Aliquam erat volutpat. Proin rhoncus turpis id nisl egestas, vitae volutpat augue sollicitudin. Curabitur tincidunt nisi ut leo fermentum faucibus.</p>
+    <p>Sed ac turpis et nisi pulvinar tincidunt. Quisque ac justo sed sapien eleifend volutpat sed nec lorem. Mauris bibendum nibh ut tincidunt lacinia.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Morbi imperdiet neque quis libero rhoncus, nec congue dolor bibendum.</p>
+    <p>Aliquam erat volutpat. Proin rhoncus turpis id nisl egestas, vitae volutpat augue sollicitudin. Curabitur tincidunt nisi ut leo fermentum faucibus.</p>
+    <p>Sed ac turpis et nisi pulvinar tincidunt. Quisque ac justo sed sapien eleifend volutpat sed nec lorem. Mauris bibendum nibh ut tincidunt lacinia.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Morbi imperdiet neque quis libero rhoncus, nec congue dolor bibendum.</p>
+    <p>Aliquam erat volutpat. Proin rhoncus turpis id nisl egestas, vitae volutpat augue sollicitudin. Curabitur tincidunt nisi ut leo fermentum faucibus.</p>
+    <p>Sed ac turpis et nisi pulvinar tincidunt. Quisque ac justo sed sapien eleifend volutpat sed nec lorem. Mauris bibendum nibh ut tincidunt lacinia.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Morbi imperdiet neque quis libero rhoncus, nec congue dolor bibendum.</p>
+    <p>Aliquam erat volutpat. Proin rhoncus turpis id nisl egestas, vitae volutpat augue sollicitudin. Curabitur tincidunt nisi ut leo fermentum faucibus.</p>
+    <p>Sed ac turpis et nisi pulvinar tincidunt. Quisque ac justo sed sapien eleifend volutpat sed nec lorem. Mauris bibendum nibh ut tincidunt lacinia.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Morbi imperdiet neque quis libero rhoncus, nec congue dolor bibendum.</p>
+    <p>Aliquam erat volutpat. Proin rhoncus turpis id nisl egestas, vitae volutpat augue sollicitudin. Curabitur tincidunt nisi ut leo fermentum faucibus.</p>
+    <p>Sed ac turpis et nisi pulvinar tincidunt. Quisque ac justo sed sapien eleifend volutpat sed nec lorem. Mauris bibendum nibh ut tincidunt lacinia.</p>
   </div>
 
   <div class="spacer"></div>
 
+  <!-- JavaScript do scroll animacji -->
   <script>
     const totalFrames = 22;
     const startFrame = 1;
     const img = document.getElementById('skull-bg');
+    const loadedFrames = [];
 
+    // Preload klatek
+    for (let i = 0; i < totalFrames; i++) {
+      const frameNumber = String(i + startFrame).padStart(4, '0');
+      const image = new Image();
+      image.src = `frames/${frameNumber}.png`;
+      loadedFrames.push(image);
+    }
+
+    // Scroll + throttle
+    let lastFrame = -1;
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       const scrollFraction = scrollTop / maxScroll;
       const frame = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames));
-      const frameNumber = String(frame + startFrame).padStart(4, '0');
-      img.src = `frames/${frameNumber}.png`;
+      if (frame !== lastFrame) {
+        const frameNumber = String(frame + startFrame).padStart(4, '0');
+        img.src = `frames/${frameNumber}.png`;
+        lastFrame = frame;
+      }
     });
   </script>
 
