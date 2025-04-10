@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Scroll Skull</title>
+  <title>Scroll Skull FIXED</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     html, body {
@@ -14,7 +14,6 @@
       overflow-x: hidden;
     }
 
-    /* Div z animowanym tłem */
     #skull-bg {
       position: fixed;
       top: 0;
@@ -27,6 +26,7 @@
       z-index: 0;
       pointer-events: none;
       background-image: url('frames/0001.png');
+      transition: background-image 0.1s linear;
     }
 
     .glass-panel {
@@ -73,49 +73,37 @@
   <!-- Panel tekstowy -->
   <div class="glass-panel">
     <h1>DUPA DUPIE NIE RÓWNA</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam...</p>
-    <p>Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
-    <p>Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
-    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-    <p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh.</p>
-    <p>Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem.</p>
-    <p>Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa.</p>
-    <p>Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim orci at velit dapibus, vel faucibus sapien sollicitudin.</p>
+    <p>Integer non velit at nunc congue tincidunt. Vivamus ultrices est in sapien blandit, non tincidunt sapien egestas.</p>
+    <p>Nam a felis eu justo dictum varius. Nullam non lorem at nulla gravida tincidunt non ut leo. Quisque condimentum suscipit nisi, ut mattis erat pulvinar at.</p>
+    <p>Phasellus malesuada, sapien sed tempor fermentum, eros turpis suscipit nunc, non fermentum metus est vitae arcu.</p>
+    <p>Aliquam erat volutpat. Curabitur in lectus libero. Integer lacinia nisl non risus convallis, a commodo arcu ultrices.</p>
+    <p>Aliquam tincidunt, elit sit amet feugiat dignissim, nisi diam gravida diam, at tincidunt metus lorem a elit.</p>
+    <p>Vestibulum feugiat velit vel leo tincidunt posuere. Curabitur nec faucibus mauris.</p>
   </div>
 
   <div class="spacer"></div>
 
-  <!-- Skrypt do animacji scrolla -->
   <script>
-    const totalFrames = 22;
-    const startFrame = 1;
-    const bgDiv = document.getElementById('skull-bg');
-    const loadedFrames = [];
+    window.addEventListener('DOMContentLoaded', () => {
+      const totalFrames = 22;
+      const startFrame = 1;
+      const bgDiv = document.getElementById('skull-bg');
+      let lastFrame = -1;
 
-    // Preload
-    for (let i = 0; i < totalFrames; i++) {
-      const frameNumber = String(i + startFrame).padStart(4, '0');
-      const image = new Image();
-      image.src = `frames/${frameNumber}.png`;
-      loadedFrames.push(image);
-    }
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const maxScroll = document.body.scrollHeight - window.innerHeight;
+        const scrollFraction = scrollTop / maxScroll;
+        const frame = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames));
+        const frameNumber = String(frame + startFrame).padStart(4, '0');
 
-    // Ustaw pierwszą klatkę
-    bgDiv.style.backgroundImage = `url('frames/0001.png')`;
-
-    let lastFrame = -1;
-
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const halfScroll = (document.body.scrollHeight - window.innerHeight) / 2;
-      const scrollFraction = Math.min(1, scrollTop / halfScroll);
-      const frame = Math.floor(scrollFraction * totalFrames);
-      const frameNumber = String(frame + startFrame).padStart(4, '0');
-
-      if (frame !== lastFrame) {
-        bgDiv.style.backgroundImage = `url('frames/${frameNumber}.png')`;
-        lastFrame = frame;
-      }
+        if (frame !== lastFrame) {
+          const path = `frames/${frameNumber}.png`;
+          bgDiv.style.backgroundImage = `url('${path}')`;
+          lastFrame = frame;
+        }
+      });
     });
   </script>
 
