@@ -63,37 +63,32 @@
 </head>
 <body>
 
-  <!-- Animowane tło -->
+  <!-- Tło -->
   <img id="skull-bg" src="frames/0001.png" alt="Skull Background" loading="eager" />
 
-  <!-- Rozmyte okienko z tekstem -->
+  <!-- Panel -->
   <div class="glass-panel">
     <h1>DUPA DUPIE NIE RÓWNA</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    <p>Aliquam eget felis vitae lectus suscipit volutpat. Nullam ac enim purus. Proin viverra sit amet nulla ac luctus. Sed vel libero nisi.</p>
-    <p>Vivamus in libero et augue sagittis faucibus. Suspendisse in blandit arcu, in bibendum eros. Cras mollis varius tortor.</p>
-    <p>Phasellus nec lorem et felis posuere congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
-    <p>Curabitur eu tristique neque. Quisque at ante sed massa pulvinar tristique nec sed orci. In porta blandit urna.</p>
-    <p>Vestibulum eget lorem ac lorem iaculis congue. Nunc convallis, velit a tincidunt vestibulum, ligula sapien tincidunt sem, non gravida massa mi ac nibh.</p>
-    <p>Morbi fringilla accumsan sapien, eget imperdiet augue porttitor a. Etiam nec mauris a diam vulputate varius.</p>
-    <p>Proin scelerisque massa nec risus fringilla, at varius justo facilisis. Mauris nec lectus vel enim mattis accumsan.</p>
-    <p>Curabitur ac luctus est, vitae tincidunt augue. Fusce luctus sem eget magna bibendum, a cursus sapien dictum.</p>
-    <p>Sed nec nunc viverra, lacinia justo in, fermentum purus. Integer lobortis, leo in dapibus ultricies, augue purus pretium magna, non bibendum turpis erat id est.</p>
-    <p>Duis efficitur sagittis ipsum, a aliquam diam commodo nec. Vivamus in faucibus ligula. Aliquam condimentum risus nec lorem dapibus, et fermentum nulla porttitor.</p>
-    <p>Nunc eu mauris ac sem facilisis eleifend. Fusce nec sapien mauris. Pellentesque imperdiet convallis nunc.</p>
-    <p>Morbi sit amet finibus sem. Nullam sed justo et nisl rhoncus suscipit. Integer sodales tincidunt erat, a feugiat lorem.</p>
-    <p>Donec tristique imperdiet neque a fermentum. Proin sed diam eros. Sed nec viverra massa, vel maximus risus.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    <p>[dodaj więcej tekstu jak chcesz]</p>
   </div>
 
   <div class="spacer"></div>
 
-  <!-- Skrypt animacji scrollowanej -->
+  <!-- Animacja (tylko górne 50% strony!) -->
   <script>
     const totalFrames = 22;
     const startFrame = 1;
     const img = document.getElementById('skull-bg');
     const loadedFrames = [];
 
+    // Preload
     for (let i = 0; i < totalFrames; i++) {
       const frameNumber = String(i + startFrame).padStart(4, '0');
       const image = new Image();
@@ -102,13 +97,15 @@
     }
 
     let lastFrame = -1;
+
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      const scrollFraction = scrollTop / maxScroll;
-      const frame = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames));
+      const maxScroll = (document.body.scrollHeight - window.innerHeight) / 2; // tylko górna połowa
+      const scrollFraction = Math.min(1, scrollTop / maxScroll);
+      const frame = Math.floor(scrollFraction * totalFrames);
       const frameNumber = String(frame + startFrame).padStart(4, '0');
-      if (frame !== lastFrame && img) {
+
+      if (frame !== lastFrame) {
         img.src = `frames/${frameNumber}.png`;
         lastFrame = frame;
       }
