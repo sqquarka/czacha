@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Scroll Skull</title>
   <style>
     html, body {
       margin: 0;
-      padding: 0;
       height: 100%;
-      background: black;
       overflow-x: hidden;
     }
 
-    /* 🔥 Czaszka jako TŁO pełnoekranowe */
     #skull-bg {
       position: fixed;
       top: 0;
@@ -21,10 +18,8 @@
       height: 100vh;
       object-fit: cover;
       z-index: 0;
-      pointer-events: none;
     }
 
-    /* 📄 Rozmyte, zaokrąglone okno po lewej stronie */
     .glass-panel {
       position: relative;
       z-index: 1;
@@ -38,16 +33,6 @@
       font-family: sans-serif;
     }
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      line-height: 1.6;
-    }
-
-    /* 🔁 Scroll space */
     .spacer {
       height: 5000px;
     }
@@ -55,20 +40,28 @@
 </head>
 <body>
 
-  <!-- 🧠 Czaszka jako tło -->
-  <img id="skull-bg" src="frames/0001.png" alt="Skull Background">
+  <img id="skull-bg" src="frames/0001.png" alt="Skull">
 
-  <!-- 🪟 Panel tekstowy -->
   <div class="glass-panel">
     <h1>DUPA DUPIE NIE RÓWNA</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
     <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
-    <p>Vivamus sit amet tortor vel nibh tincidunt porta. Curabitur ut libero sed nisi varius tempus. Phasellus condimentum lacus quis feugiat vehicula.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
+    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
+    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
+    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
+    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
+    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tortor sit amet neque tincidunt vehicula. Etiam vitae mauris ut lectus.</p>
+    <p>Donec malesuada velit nec odio facilisis, a tristique leo tempus. Pellentesque hendrerit laoreet augue.</p>
   </div>
 
   <div class="spacer"></div>
 
-  <!-- 🔁 JS – scroll to frame -->
   <script>
     const totalFrames = 22;
     const startFrame = 1;
