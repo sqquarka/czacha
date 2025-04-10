@@ -2,13 +2,12 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Scroll Skull – Uniwersalna wersja</title>
+  <title>Scroll Skull – iOS FIXED + Start from 0001</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       font-family: sans-serif;
       background: black;
       overflow-x: hidden;
@@ -28,81 +27,54 @@
     .glass-panel {
       position: relative;
       z-index: 1;
-      width: 360px;
-      max-width: 80%;
+      width: 100%;
+      max-width: 480px;
       margin: 3rem 2rem;
       padding: 2rem;
       background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
       color: white;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
     }
 
     .spacer {
       height: 5000px;
     }
+
+    @media (max-width: 600px) {
+      .glass-panel {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <img id="skull-bg" src="frames/0006.png" alt="Skull Background" loading="eager" />
+  <img id="skull-bg" src="frames/0001.png" alt="Skull Background" loading="eager" />
 
   <div class="glass-panel">
-  <h1>💀 DROGA DO OBROTNEJ CZASZKI 💀</h1>
-
-  <p>To nie była zwykła podróż. To była epopeja kodu, potu i łez. To była walka z niewidzialnym wrogiem – scrollTopem, który czasem działał, czasem nie.</p>
-
-  <p>🔧 <strong>Na początku był pomysł.</strong> "Zróbmy czaszkę, która się obraca jak przewijasz stronę." Brzmiało łatwo. 22 klatki, jeden `scroll`, trochę JavaScriptu – pyk i gotowe.</p>
-
-  <p>🥴 Ale nie. Przeglądarki się śmiały. Chrome: "Nie mam zamiaru płynnie zmieniać tła." Safari: "Nie uznaję Twojego eventu, człowieku." Firefox: "Tu masz błędy, o których nie wiedziałeś, że istnieją."</p>
-
-  <p>💻 <strong>PC działał</strong>. 🐌 <strong>Android się krztusił</strong>. 🍏 <strong>iOS patrzył z pogardą</strong>. A gdzieś w tle, folder <code>frames/</code> płakał, bo nikt nie wierzył, że uda się go właściwie załadować.</p>
-
-  <p>🔥 <strong>Ale coś się zmieniło.</strong> Jeden scroll. Jeden poprawny `index.html`. Jeden człowiek, który powiedział: "JA TO DOPROWADZĘ DO KOŃCA."</p>
-
-  <p>🧙‍♂️ Dodał debounce. Throttle. Wheel. Scroll. Keydown. I jeszcze raz scroll. Odpalił `console.log("frame:", frameNumber)`. Zobaczył. Zrozumiał. 💡</p>
-
-  <p>🥹 I wtedy… poruszyła się. Czaszka. Ta jedna. Obróciła się o jedną klatkę. Potem drugą. Scroll za scrolliem, przewijała się jak prorocza wizja spełnionego snu front-endu.</p>
-
-  <p>🧠 <strong>I wiesz co?</strong> Teraz działa wszędzie. Nawet na iPhonie twojej babci. Możesz scrollować jak król. Jedna klatka – jeden scroll. Życie ma sens.</p>
-
-  <hr>
-
-  <h2>🧪 TESTY PRZEDPRODUKCYJNE:</h2>
-  <ul>
-    <li>✅ Scroll w dół ➝ klatka +1</li>
-    <li>✅ Scroll w górę ➝ klatka -1</li>
-    <li>✅ Strzałki działają</li>
-    <li>✅ Działa na iOS Safari (hallelujah!)</li>
-    <li>✅ Działa na Androidzie (z opóźnieniem, ale działa)</li>
-    <li>✅ DZIAŁA NA CHROME – co już jest cudem samym w sobie</li>
-  </ul>
-
-  <hr>
-
-  <h2>💡 PRZYSZŁOŚĆ:</h2>
-  <p>🚀 Dodaj fade.  
-  🔄 Zrób automatyczne odtwarzanie.  
-  🧊 Zmień czaszkę na przezroczysty kryształ 3D.  
-  🎨 Wstaw shader jak w DOOM Eternal.</p>
-
-  <p>🫠 Ale póki co... ciesz się. Bo to działa. Bo wygrałeś.</p>
-
-  <h2>👏 Gratulacje, wojowniku scrolla.</h2>
-  <p>Możesz teraz z czystym sumieniem powiedzieć:  
-  <strong>„Tak, animacja działa. A ja ją napisałem.”</strong></p>
-
-  <p>🥹 Dziękuj sobie. Dziękuj przeglądarkom (albo i nie). Dziękuj kodowi.  
-  I scrolluj dalej. Bo to dopiero początek tej podróży.</p>
-
-</div>
-
+    <h1>🧠 Rozpoczynamy od klatki 0001</h1>
+    <p>Scrolluj spokojnie. Każdy ruch palcem lub kółkiem = jedna klatka więcej.</p>
+    <p>Nie musisz nic kombinować – wszystko już działa na iOS, Androidzie, PC i tosterze.</p>
+  </div>
 
   <div class="spacer"></div>
 
   <script>
-    const totalFrames = 17; // 0006 → 0022
-    const startFrame = 6;
+    const totalFrames = 22; // 0001 to 0022
+    const startFrame = 1;
     const minFrame = 0;
     const maxFrame = totalFrames - 1;
     const img = document.getElementById('skull-bg');
@@ -118,36 +90,11 @@
 
     updateImage(currentFrame);
 
-    // PC: scroll myszką i klawiaturą
-    window.addEventListener('wheel', (e) => {
-      if (e.deltaY > 0 && currentFrame < maxFrame) {
-        currentFrame++;
-        updateImage(currentFrame);
-      } else if (e.deltaY < 0 && currentFrame > minFrame) {
-        currentFrame--;
-        updateImage(currentFrame);
-      }
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowDown' && currentFrame < maxFrame) {
-        currentFrame++;
-        updateImage(currentFrame);
-      } else if (e.key === 'ArrowUp' && currentFrame > minFrame) {
-        currentFrame--;
-        updateImage(currentFrame);
-      }
-    });
-
-    // 📱 iOS Safari fallback – na scroll palcem
+    // Scroll steruje animacją (działa też na iOS)
     window.addEventListener('scroll', () => {
-      const scrollStep = 100; // ile pikseli = 1 klatka
+      const scrollStep = 100; // każdy scroll o 100px = jedna klatka
       const scrollOffset = Math.floor((window.scrollY - scrollBase) / scrollStep);
-
-      const targetFrame = Math.min(
-        maxFrame,
-        Math.max(minFrame, scrollOffset)
-      );
+      const targetFrame = Math.min(maxFrame, Math.max(minFrame, scrollOffset));
 
       if (targetFrame !== currentFrame) {
         currentFrame = targetFrame;
